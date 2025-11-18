@@ -1,0 +1,25 @@
+# Modern Approve Expenses Screenshot
+
+This screenshot would show the modernized Approve Expenses page with:
+
+- Modern card-based interface with gradient purple/blue header
+- Header: "Approve Expenses"
+- Subheading: "Pending expenses:"
+
+Features:
+- Filter search bar for finding specific expenses
+- Clean table showing pending expenses with columns:
+  - Date (dd/MM/yyyy format)
+  - Category
+  - Amount (£ with 2 decimals)
+  - Description
+  - Actions column with two buttons:
+    - Green "✓ Approve" button
+    - Red "✗ Reject" button
+
+- Success messages when expenses are approved/rejected
+- Real-time updates after approval actions
+- Responsive design
+- Professional appearance
+
+This replaces the legacy grey interface with a modern manager approval workflow.

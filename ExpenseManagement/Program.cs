@@ -27,6 +27,7 @@ builder.Services.AddSwaggerGen(c =>
 
 // Register services
 builder.Services.AddSingleton<IExpenseService, DummyExpenseService>();
+builder.Services.AddSingleton<IChatService, ChatService>();
 
 var app = builder.Build();
 

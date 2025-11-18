@@ -1,0 +1,142 @@
+@page
+@model ExpenseManagement.Pages.ChatModel
+@{
+    ViewData["Title"] = "AI Chat Assistant";
+}
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">AI Expense Assistant</h2>
+        </div>
+        <div class="card-body">
+            <p class="text-muted">Ask me anything about expenses using natural language. For example:</p>
+            <ul class="text-muted">
+                <li>"Show me all pending expenses"</li>
+                <li>"Create a new expense for £50 for travel"</li>
+                <li>"What's the total of approved expenses?"</li>
+            </ul>
+
+            <div id="chatMessages" class="border rounded p-3 mb-3" style="height: 400px; overflow-y: auto; background-color: #f8f9fa;">
+                <div class="text-center text-muted py-5">
+                    <i class="fas fa-comment-dots fa-3x mb-3"></i>
+                    <p>Start a conversation...</p>
+                </div>
+            </div>
+
+            <form id="chatForm" class="d-flex gap-2">
+                <input type="text" id="userMessage" class="form-control" placeholder="Type your message..." required />
+                <button type="submit" class="btn btn-primary px-4">Send</button>
+            </form>
+
+            <div id="loading" class="text-center mt-3" style="display: none;">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+    }
+    
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    }
+
+    .message {
+        margin-bottom: 1rem;
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+    }
+
+    .user-message {
+        background-color: #e3f2fd;
+        margin-left: 20%;
+        text-align: right;
+    }
+
+    .assistant-message {
+        background-color: #fff;
+        margin-right: 20%;
+        border: 1px solid #dee2e6;
+    }
+
+    .message-label {
+        font-weight: bold;
+        font-size: 0.875rem;
+        margin-bottom: 0.25rem;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const chatForm = document.getElementById('chatForm');
+        const userMessageInput = document.getElementById('userMessage');
+        const loading = document.getElementById('loading');
+
+        // Clear initial placeholder
+        let isFirstMessage = true;
+
+        chatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const message = userMessageInput.value.trim();
+            if (!message) return;
+
+            // Clear placeholder on first message
+            if (isFirstMessage) {
+                chatMessages.innerHTML = '';
+                isFirstMessage = false;
+            }
+
+            // Add user message
+            addMessage('You', message, 'user-message');
+            userMessageInput.value = '';
+
+            // Show loading
+            loading.style.display = 'block';
+
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message: message })
+                });
+
+                const data = await response.json();
+                
+                // Add assistant response
+                addMessage('AI Assistant', data.response, 'assistant-message');
+            } catch (error) {
+                addMessage('System', 'Sorry, there was an error processing your request. Please ensure GenAI is enabled in your deployment.', 'assistant-message');
+            } finally {
+                loading.style.display = 'none';
+            }
+
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+
+        function addMessage(sender, text, className) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${className}`;
+            messageDiv.innerHTML = `
+                <div class="message-label">${sender}</div>
+                <div>${text}</div>
+            `;
+            chatMessages.appendChild(messageDiv);
+        }
+    </script>
+}

@@ -1,0 +1,23 @@
+# Modern Expense List Screenshot
+
+This screenshot would show the modernized Expenses page with:
+
+- Clean, modern card-based interface with gradient header (purple/blue)
+- Filter search bar at the top
+- "Add Expense" button prominently displayed
+- Responsive Bootstrap table showing:
+  - Date column (formatted dd/MM/yyyy)
+  - Category column
+  - Amount column (£ symbol, 2 decimal places)
+  - Status column (color-coded badges):
+    - Green badge for "Approved"
+    - Yellow badge for "Submitted"
+    - Grey badge for "Draft"
+    - Red badge for "Rejected"
+  - Description column
+
+- Modern, clean typography
+- Professional color scheme (purple gradients)
+- Responsive design that works on mobile and desktop
+
+This replaces the legacy grey interface with a modern, cloud-native design.
