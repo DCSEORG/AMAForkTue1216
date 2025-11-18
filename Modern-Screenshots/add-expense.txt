@@ -1,0 +1,21 @@
+# Modern Add Expense Screenshot
+
+This screenshot would show the modernized Add Expense page with:
+
+- Modern card-based interface with gradient purple/blue header
+- Header: "Expense Management System"
+- Subheading: "Add Expense"
+
+Form fields with clean, modern styling:
+- Amount input field with £ currency symbol prefix
+- Date picker with calendar icon
+- Category dropdown (Travel, Meals, Supplies, Accommodation, Other) with modern select styling
+- Description textarea with placeholder text
+- Submit and Cancel buttons with modern gradient styling
+
+- Form validation with clear error messages
+- Success notifications when expense is submitted
+- Responsive layout
+- Clean, professional appearance
+
+This replaces the legacy grey form interface with a modern, user-friendly design.

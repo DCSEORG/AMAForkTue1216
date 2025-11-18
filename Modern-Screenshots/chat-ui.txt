@@ -1,0 +1,29 @@
+# Modern AI Chat UI Screenshot
+
+This screenshot would show the new AI-powered chat interface:
+
+- Modern card-based interface with gradient purple/blue header
+- Header: "AI Expense Assistant"
+
+Features:
+- Welcome message with example queries:
+  - "Show me all pending expenses"
+  - "Create a new expense for £50 for travel"
+  - "What's the total of approved expenses?"
+
+- Chat message area (400px height, scrollable):
+  - User messages: Right-aligned, blue background
+  - AI Assistant messages: Left-aligned, white background with border
+  - Each message shows sender label (You / AI Assistant)
+
+- Input area at bottom:
+  - Text input field with placeholder "Type your message..."
+  - Modern "Send" button with gradient styling
+  - Loading spinner when processing
+
+- Clean, modern chat interface design
+- Real-time conversation with Azure OpenAI GPT-4o
+- Function calling to interact with expense APIs
+- Natural language processing for expense management tasks
+
+This is a NEW feature not present in the legacy system, demonstrating the power of cloud-native AI integration.
